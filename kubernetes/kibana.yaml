@@ -1,0 +1,83 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kibana-config
+  labels:
+    component: kibana
+data:
+  kibana.yml: |-
+    server.host: 0.0.0.0
+    xpack.security.enabled: true
+    xpack.fleet.agents.tlsCheckDisabled: true
+    xpack.encryptedSavedObjects.encryptionKey: "232c2b94d2bebe6d0a4293a9352511a6"
+    elasticsearch.hosts: "${ELASTIC_HOSTS}"
+    elasticsearch.username: "${ELASTIC_USERNAME}"
+    elasticsearch.password: "${ELASTIC_PASSWORD}"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  labels:
+    app: kibana
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:7.10.1
+        ports:
+        - containerPort: 5601
+        env:
+        - name: ELASTIC_HOSTS
+          value: "http://elasticsearch-svc.default.svc.cluster.local:9200"
+        - name: ELASTIC_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: elasticsearch-username
+              key: username
+        - name: ELASTIC_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: elasticsearch-password
+              key: password
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 500Mi
+          requests:
+            cpu: 100m
+        volumeMounts:
+        - name: config
+          mountPath: /usr/share/kibana/config/kibana.yml
+          readOnly: true
+          subPath: kibana.yml
+      volumes:
+      - name: config
+        configMap:
+          name: kibana-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: kibana
+  name: kibana-svc
+  namespace: default
+spec:
+  ports:
+  - nodePort: 30920
+    port: 5601
+    protocol: TCP
+    targetPort: 5601
+  selector:
+    app: kibana
+  type: NodePort
