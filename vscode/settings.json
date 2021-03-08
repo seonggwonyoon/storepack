@@ -1,0 +1,34 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.iconTheme": "vscode-icons",
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.sortConfiguration.customOrderingRules.rules": [
+        {
+            "orderLevel": 11,
+            "regex": "^[a-z@][a-z]"
+        },
+        {
+            "orderLevel": 21,
+            "regex": "^@/"
+        },
+        {
+            "orderLevel": 31,
+            "regex": "^\\."
+        }
+    ],
+    "files.trimTrailingWhitespace": true,
+    "explorer.confirmDragAndDrop": false,
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Monokai",
+    "editor.fontFamily": "'Jetbrains Mono'",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "Jetbrains Mono",
+    "terminal.integrated.fontSize": 12,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.largeFileOptimizations": false,
+    "editor.fontSize": 14,
+    "cSpell.ignoreRegExpList": [
+        ".*"
+    ]
+}
