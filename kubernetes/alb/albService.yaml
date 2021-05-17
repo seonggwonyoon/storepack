@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: APP_NAME
+  namespace: default
+spec:
+  ports:
+    - port: 443
+      targetPort: PORT
+      protocol: TCP
+  type: NodePort
+  selector:
+    app: APP_NAME
