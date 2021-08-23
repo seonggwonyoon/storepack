@@ -1,43 +1,25 @@
 {
-    "workbench.startupEditor": "newUntitledFile",
-    "typescript.format.enable": false,
-    "importSorter.generalConfiguration.sortOnBeforeSave": true,
-    "importSorter.sortConfiguration.customOrderingRules.rules": [
-        {
-            "orderLevel": 11,
-            "regex": "^[a-z@][a-z]"
-        },
-        {
-            "orderLevel": 21,
-            "regex": "^@/"
-        },
-        {
-            "orderLevel": 31,
-            "regex": "^\\."
-        }
-    ],
-    "files.trimTrailingWhitespace": true,
-    "explorer.confirmDragAndDrop": false,
-    "workbench.sideBar.location": "right",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.accessibilitySupport": "off",
     "editor.fontFamily": "'SF Mono Powerline'",
     "editor.fontLigatures": true,
+    "editor.fontSize": 12,
+    "editor.inlineSuggest.enabled": true,
+    "editor.largeFileOptimizations": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.exclude": {
+        "node_modules": true
+    },
+    "files.trimTrailingWhitespace": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "remote.WSL.fileWatcher.polling": true,
     "terminal.integrated.fontFamily": "'SF Mono Powerline'",
     "terminal.integrated.fontSize": 12,
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.largeFileOptimizations": false,
-    "editor.fontSize": 14,
-    "cSpell.ignoreRegExpList": [
-        ".*"
-    ],
-    "gitlens.advanced.messages": {
-        "suppressGitMissingWarning": true
-    },
-    "remote.WSL.fileWatcher.polling": true,
-    "vs-kubernetes": {
-        "vscode-kubernetes.kubectl-path.mac": "/Users/seonggwonyoon/.vs-kubernetes/tools/kubectl/kubectl"
-    },
-    "explorer.confirmDelete": false,
-    "workbench.colorTheme": "Monokai Pro",
-    "workbench.iconTheme": "Monokai Pro Icons"
+    "typescript.format.enable": false,
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorTheme": "Monokai",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.sideBar.location": "right",
+    "workbench.startupEditor": "newUntitledFile"
 }
