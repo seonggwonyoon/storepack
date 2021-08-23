@@ -1,0 +1,30 @@
+---
+replicas: 1
+
+clusterHealthCheckParams: 'wait_for_status=yellow&timeout=1s'
+#esConfig:
+#  elasticsearch.yml: |
+#      xpack.security.enabled: true
+#      xpack.monitoring.collection.enabled: true
+#      xpack.security.transport.ssl.enabled: true
+
+image: "docker.elastic.co/elasticsearch/elasticsearch"
+imageTag: "7.10.1"
+imagePullPolicy: "IfNotPresent"
+
+# Allocate smaller chunks of memory per pod.
+resources:
+  requests:
+    cpu: "100m"
+    memory: "512M"
+  limits:
+    cpu: "1000m"
+    memory: "512M"
+
+# Request smaller persistent volumes.
+volumeClaimTemplate:
+  accessModes: [ "ReadWriteOnce" ]
+  storageClassName: "stage-elastic"
+  resources:
+    requests:
+      storage: 2Gi
