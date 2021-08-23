@@ -20,6 +20,6 @@ spec:
             - --ingress-class=alb
             - --cluster-name=EKS_CLUSTER
             - --aws-vpc-id=VPC_ID
-            - --aws-region=ap-northeast-2 # Korea
+            - --aws-region=ap-northeast-2
           image: docker.io/amazon/aws-alb-ingress-controller:v2.2.0
       serviceAccountName: alb-ingress-controller

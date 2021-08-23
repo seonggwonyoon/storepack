@@ -10,7 +10,7 @@ data:
     server.host: 0.0.0.0
     xpack.security.enabled: true
     xpack.fleet.agents.tlsCheckDisabled: true
-    xpack.encryptedSavedObjects.encryptionKey: "232c2b94d2bebe6d0a4293a9352511a6"
+    xpack.encryptedSavedObjects.encryptionKey: "${XPACK_ENCRYPTION_KEY}"
     elasticsearch.hosts: "${ELASTIC_HOSTS}"
     elasticsearch.username: "${ELASTIC_USERNAME}"
     elasticsearch.password: "${ELASTIC_PASSWORD}"
@@ -39,6 +39,11 @@ spec:
         env:
         - name: ELASTIC_HOSTS
           value: "http://elasticsearch-svc.default.svc.cluster.local:9200"
+        - name: XPACK_ENCRYPTION_KEY
+          valueFrom:
+            secretKeyRef:
+              name: xpack-encryption-key
+              key: password
         - name: ELASTIC_USERNAME
           valueFrom:
             secretKeyRef:
