@@ -17,7 +17,7 @@ spec:
           serviceAccountName: ecr-renew
           containers:
             - name: ecr-renew
-              image: nabsul/k8s-ecr-login-renew:v1.5
+              image: nabsul/k8s-ecr-login-renew:v1.6
               env:
                 - name: DOCKER_SECRET_NAME
                   value: ecr-login
